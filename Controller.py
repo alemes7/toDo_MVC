@@ -1,4 +1,5 @@
 from Model import *
+import os
 
 class ControllerAdicionarTarefa():
     def __init__(self, tarefa):
@@ -32,7 +33,10 @@ class ControllerExcluirTarefa():
    
             else:
                 print("Algum problema foi encontrado.")                
+                os.system("cls")
 
+        except Exception as erro:
+            print("Erro ao remover a tarefa: {erro}")
         except Exception as erro:
                 print("Digite um número válido. Esta tarefa não existe.")
 
