@@ -1,12 +1,17 @@
 class ToDo():
+
     def __init__(self):
         self.lista = []
-            
-    def AdicionarTarefa():
-        pass
-        
-    def RemoverTarefa():
-        pass
-        
-    def ListarTarefas():
-        pass
+
+    def AdicionarTarefa(self, tarefa):
+        self.lista.append(tarefa)
+        return True
+
+    def RemoverTarefa(self, excluir):
+        self.lista.pop(excluir)
+        return True
+
+    def ListarTarefas(self):
+        return self.lista
+
+TODO = ToDo()
