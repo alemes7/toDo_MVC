@@ -31,12 +31,10 @@ class ControllerExcluirTarefa():
 class ControllerListarTarefa():
     def __init__(self):
         try:
-            ControllerLista = dao.listarTarefa()
-            if not ControllerLista:
-                print("Nenhuma tarefa encontrada.")
-            else:
+            tarefas = dao.listarTarefa()
+            if tarefas:
                 cont = 1
-                for tarefa in ControllerLista:
+                for tarefa in tarefas:
                     print(f"{cont} -- {tarefa}")
                     cont += 1
 
