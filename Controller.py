@@ -1,4 +1,5 @@
 from Model import *
+from Dao import *
 
 class ControllerAdicionarTarefa():
     
