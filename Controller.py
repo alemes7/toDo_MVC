@@ -1,21 +1,18 @@
 from Model import *
-import os
 
 class ControllerAdicionarTarefa():
+    
     def __init__(self, tarefa):
-
         try:
             if tarefa == "":
                 print("Digite uma tarefa válida.")
-
             else:
-
                 try:
                     self.tarefa = tarefa
                     if TODO.AdicionarTarefa(self.tarefa) == True:
                         print("Tarefa adicionada.")
                     else:
-                        print("Algum problema foi encontrado.")
+                        print("Algum problema foi encontrado, tente novamente.")
 
                 except Exception as erro:
                     print("Erro ao adicionar a tarefa: {erro}")
@@ -25,19 +22,17 @@ class ControllerAdicionarTarefa():
 
 class ControllerExcluirTarefa():
     def __init__(self, excluir):
-        self.excluir = excluir
-
         try:
-            if TODO.RemoverTarefa(self.excluir) == True:
-                excluir_convert = int(self.excluir)
-                excluir_convert -= 1
-                print("Tarefa removida.")
-                    
-            else:
-                print("Algum problema foi encontrado.")     
-
+            self.excluir_convert = excluir
+            excluir_convert = int(self.excluir)
+            excluir_convert-=1
+            
+            TODO.RemoverTarefa(self.excluir) == True
+            print("Tarefa removida.")
+            
         except Exception as erro:
                 print("Digite um número válido. Esta tarefa não existe.")
+                
 
 class ControllerListarTarefa():
     def __init__(self):

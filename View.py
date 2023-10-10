@@ -6,31 +6,27 @@ while sair == 0:
 
     os.system("cls")
     print("SOFTWARE DE TO-DO \n1 - Adicionar tarefa \n2 - Listar tarefas \n3 - Remover tarefa \n4 - Sair")
-    opcao = input("Digite a opção desejada > ")
+    opcao = input("Digite a opção desejada.\n-> ")
 
     match opcao:
         case "1":
             os.system("cls")
-            tarefa = input("Digite a tarefa > ")
+            tarefa = input("Digite a tarefa.\n-> ")
             adicionarTarefa = ControllerAdicionarTarefa(tarefa)
             os.system("pause")
 
-    
+
         case "2":
             os.system("cls")
             listarTarefa = ControllerListarTarefa()
             os.system("pause")
 
         case "3":
-            trava = 0
-            while trava == 0:
-                os.system("cls")
-                listarTarefa = ControllerListarTarefa()
-                excluir = input("Digite o número da tarefa que deseja excluir > ")
-                excluirTarefa = ControllerExcluirTarefa(excluir)
-                os.system("pause")
-                
-                trava = 1
+            os.system("cls")
+            listarTarefa = ControllerListarTarefa()
+            excluir = input("Digite o número da tarefa que deseja excluir.\n-> ")
+            excluirTarefa = ControllerExcluirTarefa(excluir)
+            os.system("pause")
 
         case "4":
             os.system("cls")
@@ -38,4 +34,5 @@ while sair == 0:
 
         case _:
             os.system("cls")
-            print("Opção inválida")
+            print("Opção inválida, tente novamente.")
+            
