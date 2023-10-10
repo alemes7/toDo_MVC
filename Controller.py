@@ -32,11 +32,8 @@ class ControllerExcluirTarefa():
                 print("Tarefa removida.")
    
             else:
-                print("Algum problema foi encontrado.")                
-                os.system("cls")
+                print("Algum problema foi encontrado.")     
 
-        except Exception as erro:
-            print("Erro ao remover a tarefa: {erro}")
         except Exception as erro:
                 print("Digite um número válido. Esta tarefa não existe.")
 
