@@ -4,22 +4,15 @@ from Dao import *
 class ControllerAdicionarTarefa():
     
     def __init__(self, tarefa):
+        self.tarefa = tarefa
         try:
-            if tarefa == "":
-                print("Digite uma tarefa válida.")
+            if dao.adicionarTarefa(self.tarefa) == True:
+                  print("Tarefa Adicionada!")
             else:
-                try:
-                    self.tarefa = tarefa
-                    if TODO.AdicionarTarefa(self.tarefa) == True:
-                        print("Tarefa adicionada.")
-                    else:
-                        print("Algum problema foi encontrado, tente novamente.")
+                 print("Tarefa não foi adicionada.")
 
-                except Exception as erro:
-                    print("Erro ao adicionar a tarefa: {erro}")
-
-        except Exception as erro:
-                print("Erro ao adicionar a tarefa: {erro}")
+        except Exception:
+            print("Digite uma tarefa válida.")
 
 class ControllerExcluirTarefa():
     def __init__(self, excluir):
@@ -37,9 +30,15 @@ class ControllerExcluirTarefa():
 
 class ControllerListarTarefa():
     def __init__(self):
-        ControllerLista = TODO.ListarTarefas()
-        cont = 0
+        try:
+            ControllerLista = dao.listarTarefa()
+            if not ControllerLista:
+                print("Nenhuma tarefa encontrada.")
+            else:
+                cont = 1
+                for tarefa in ControllerLista:
+                    print(f"{cont} -- {tarefa}")
+                    cont += 1
 
-        for tarefas in ControllerLista:
-            cont += 1
-            print(f"{cont}. {tarefas}")
+        except Exception as erro:
+            print(f"Erro: {erro}")
