@@ -34,7 +34,7 @@ class ControllerExcluirTarefa():
                 print("Algum problema foi encontrado.")                
 
         except Exception as erro:
-                print("Erro ao excluir a tarefa: {erro}")
+                print("Digite um número válido. Esta tarefa não existe.")
 
 
 class ControllerListarTarefa():
