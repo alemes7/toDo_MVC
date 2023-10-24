@@ -1,18 +1,27 @@
-from Controller import *
+class DaoAdicionarTarefa():
+    def __init__(self, tarefa, idtarefa):
+        self.idtarefa = idtarefa
+        idtarefa = None
+        with open("tarefas.txt", "a") as arquivo:
+            arquivo.write(' - ')
+            arquivo.write(tarefa)
+            arquivo.write("\n")
+            print("Tarefa adicionada ao DAO.")
 
-class Dao():
+class DaoExcluirTarefa():
+    def __init__(self, excluir):
+         with open("tarefas.txt", "r") as arquivo:
+            linhas = arquivo.readlines()
+            linhas.pop(int(excluir) - 1)
+            with open("tarefas.txt", "w") as arquivo:
+                arquivo.writelines(linhas)
+                print("Tarefa removida do DAO.")
+
+class DaoListarTarefa():
     def __init__(self):
-        self.arquivo = "tarefas.txt"
-
-    def adicionarTarefa(self, tarefa):
-        with open(self.arquivo, "a") as f:
-            f.write(f"{tarefa}\n")
-        return True
-
-    def listarTarefa(self):
-        with open(self.arquivo, "r") as f:
-            tarefas = f.readlines()
-            for tarefa in tarefas:
-                print(tarefa.strip())
-
-dao = Dao()
+        with open("tarefas.txt", "r") as arquivo:
+            linhas = arquivo.readlines()
+            cont = -1
+            for tarefas in linhas:
+                cont += 1
+                print(f"{cont}. {tarefas}")
