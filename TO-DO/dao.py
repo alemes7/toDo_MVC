@@ -1,12 +1,12 @@
 with open("tarefas.txt", "a") as arquivo:
-        arquivo.write("ST   ID  TAREFA\n")
+    arquivo.write("ST   ID  TAREFA\n")
 
 class Dao:
     def __init__(self):
         self.arquivo= "tarefas.txt"
-        
+
 class DaoAdicionarTarefa():
-    
+
     def adicionar_tarefa(self, tarefa, idtarefa, status):
         with open("tarefas.txt", "a") as arquivo:
             arquivo.write(status)
@@ -16,30 +16,28 @@ class DaoAdicionarTarefa():
             arquivo.write(tarefa)
             arquivo.write("\n")
         return True
-
+    
 class DaoExcluirTarefa():
-
-    def excluir(excluir):
+    def excluir(self, idexcluir):
         with open("tarefas.txt", "r") as arquivo:
             linhas = arquivo.readlines()
-            linhas.pop(int(excluir) - 1)
+            linhas.pop(int(idexcluir) - 1)
             with open("tarefas.txt", "w") as arquivo:
                 arquivo.writelines(linhas)
             return True
                     
 class DaoListarTarefa():
-
-    def listar():
+    def listar(self):
         with open("tarefas.txt", "r") as arquivo:
             linhas = arquivo.readlines()
         return linhas
-    
+
 class DaoStatusTarefa():
-    def concluir():
+    def concluir(self):
         with open("tarefas.txt", "") as arquivo:
             pass
     
-    def inativar():
+    def inativar(self):
         with open("tarefas.txt", "") as arquivo:
             pass
 

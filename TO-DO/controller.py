@@ -33,8 +33,7 @@ class ControllerExcluirTarefa():
         self.idexcluir = idexcluir
 
         try:
-            if idexcluir in TODO.ListarTarefas():
-                TODO.RemoverTarefa(idexcluir)
+            if TODO.RemoverTarefa(idexcluir):
                 print("Tarefa removida.")
             else:
                 print("Algum problema foi encontrado.")
@@ -45,22 +44,21 @@ class ControllerExcluirTarefa():
 
 class ControllerListarTarefa():
     def __init__(self):
-            tarefas_lista = TODO.ListarTarefas()
+        ControllerLista = TODO.ListarTarefas()
             
-            cont = 0
-            for tarefa in tarefas_lista:
-                cont += 1
-                tarefas_corrigidas = tarefa.split("\t", 2)
+        cont = -1
+        for tarefa in ControllerLista:
+            cont += 1
+            tarefas_corrigidas = tarefa.split("\t", 2)
+            
+            if len(tarefas_corrigidas) > 2:
+                tarefas_formatadas = tarefas_corrigidas[2][:-1]
                 
-                if len(tarefas_corrigidas) > 2:
-                    tarefas_formatadas = tarefas_corrigidas[2][:-1]
-                    
-                    if cont >= 1:
-                        print(f"{cont}. {tarefas_formatadas}")
+                if cont >= 0:
+                    print(f"{cont}. {tarefas_formatadas}")
 
 class ControllerAlterarTarefa(ControllerListarTarefa):
     def __init__(self):
-        super().__init__()  # chama a: ControllerListarTarefa.__init__(self)
         self.dao_alterar_tarefa = DaoAlterarTarefa()
         self.controller_todo = ToDo()
 
